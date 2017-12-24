@@ -1,0 +1,1 @@
+export const constructor = 'constructor';

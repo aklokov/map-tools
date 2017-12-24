@@ -1,9 +1,10 @@
 {
-  "name": "tslib-seed",
-  "version": "1.0.0",
-  "description": "update this",
+  "name": "@vr/map-tools",
+  "version": "1.0.5",
+  "description": "Toolset to work with Map and 'object as hash map'",
   "files": [
-    "build/src"
+    "build/src",
+    "objectMap"
   ],
   "main": "build/src/index.js",
   "typings": "build/src/index",
@@ -13,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/repinvv/tslib-seed.git"
+    "url": "git+https://github.com/repinvv/map-tools-ts.git"
   },
   "devDependencies": {
     "@types/chai": "^4.0.10",
@@ -29,5 +30,8 @@
     "run-sequence": "^2.2.0",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "object-tools-ts": "^1.0.1"
   }
 }
