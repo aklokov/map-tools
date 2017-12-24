@@ -4,7 +4,7 @@ Toolset to work with Map and "object as hash map", map and lookup.
 Main purpose of using Map and "object as hash map" is to have a fast, O(1) search for items using given key/id.
 Toolset is made of few, most frequently used functions to create and work with those maps.
 
-#previous lib
+# previous lib
 Previously, hash-map library was used, however, i discovered that there is still that very special property "\_\_proto\_\_" in the object that can not be used as a key. For example if you assign it the following way: a['\_\_proto\_\_'] = '1'; you will not be able to get the value back a['\_\_proto\_\_'] will yield an object instead of '1';. I have the impression that this did work on some previous versions of Chrome/Node, however i can't be sure of that.
 Therefore, whole concept of shielding values became 'not viable'.
 
@@ -16,7 +16,7 @@ result['constructor']; // -> undefined
 ```
 And finally, there is 'get' method to be used on unsanitized objects.
 
-#creating a map
+# creating a map
 map creates 1-to-1 Map from array source. If key occurs more than once, the latest value in the array will be used.
 ```js
 const array = [{id: 1, name: '1'}, {id: 2, name '2'}];
@@ -37,10 +37,10 @@ result.get(1); // -> produces array with first and third objects
 result2.get(1); // -> produces following array ['1', '3']
 ```
 
-#creating an objectMap
+# creating an objectMap
 the same methods, with same signatures are used to create maps and lookups, however, only number and string can be used as a key and, as i stated earlier, '\_\_proto\_\_' string can not be a key. Methods can be imported from 'maptools/objectMap'.
 
-#merging the maps
+# merging the maps
 merge operator does that for 2 instances of Map. Result is the new instance of the map.
 If same id is present in both maps, value from second map will be in the result.
 ```js
