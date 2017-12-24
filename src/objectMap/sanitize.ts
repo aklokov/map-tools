@@ -1,5 +1,5 @@
 import { create } from './create';
-import { forIn, isObject, nullObject } from 'object-tools-ts';
+import { forIn, isObject, nullObject } from '@vlr/object-tools';
 
 export function sanitize(obj: any): any {
   if (Array.isArray(obj)) {

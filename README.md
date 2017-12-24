@@ -1,4 +1,4 @@
-# maptools
+# @vlr/map-tools
 Toolset to work with Map and "object as hash map", map and lookup.
 
 Main purpose of using Map and "object as hash map" is to have a fast, O(1) search for items using given key/id.

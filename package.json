@@ -1,6 +1,6 @@
 {
-  "name": "@vr/map-tools",
-  "version": "1.0.5",
+  "name": "@vlr/map-tools",
+  "version": "1.0.6",
   "description": "Toolset to work with Map and 'object as hash map'",
   "files": [
     "build/src",
@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/repinvv/map-tools-ts.git"
+    "url": "git+https://github.com/repinvv/map-tools.git"
   },
   "devDependencies": {
     "@types/chai": "^4.0.10",
@@ -32,6 +32,6 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
-    "object-tools-ts": "^1.0.1"
+    "@vlr/object-tools": "^1.0.1"
   }
 }
