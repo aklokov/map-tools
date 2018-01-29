@@ -8,4 +8,5 @@ __export(require("./map"));
 __export(require("./toObjectMap"));
 __export(require("./merge"));
 __export(require("./get"));
+__export(require("./extend"));
 //# sourceMappingURL=index.js.map

@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { merge } from "../src";
+import { merge, extend } from "../src";
 import { noValue } from "./noValue";
 
 describe("Map/merge", function (): void {
@@ -34,5 +34,19 @@ describe("Map/merge", function (): void {
     expect(map.get(1)).to.be.equal("2");
     expect(map.get(2)).to.be.equal("1");
     expect(noValue(map.get(3))).to.be.equal(true);
+  });
+
+  it("should return new map ", async function (): Promise<void> {
+    // arrange
+    const first = new Map<number, boolean>();
+    first.set(1, true);
+
+    // act
+    const map = extend(first);
+
+    // assert
+    expect(map.get(1)).to.be.equal(true);
+    expect(noValue(map.get(3))).to.be.equal(true);
+    expect(map).to.be.not.equal(first);
   });
 });
