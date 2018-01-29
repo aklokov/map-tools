@@ -1,4 +1,5 @@
-import { create } from './create';
+import { nullObject } from "@vlr/object-tools";
+
 export function extend<T>(src: T, extend?: T): T {
-  return Object.assign(create(), src, extend);
+  return Object.assign(nullObject(), src, extend);
 }

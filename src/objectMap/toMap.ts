@@ -1,4 +1,4 @@
-import { IMap, INumberMap } from './interfaces';
+import { IMap, INumberMap } from "./interfaces";
 
 export function toMap<TVal>(map: IMap<TVal>): Map<string, TVal>;
 export function toMap<TVal>(map: INumberMap<TVal>): Map<string, TVal>;

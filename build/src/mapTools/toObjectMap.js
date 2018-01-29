@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const objectMap_1 = require("../objectMap");
+const object_tools_1 = require("@vlr/object-tools");
 function toObjectMap(map) {
-    const result = objectMap_1.create();
+    const result = object_tools_1.nullObject();
     for (let [key, val] of map) {
         result[key] = val;
     }

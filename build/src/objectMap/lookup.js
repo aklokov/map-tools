@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const create_1 = require("./create");
+const object_tools_1 = require("@vlr/object-tools");
 function lookup(array, keySelector, valSelector) {
     if (!array) {
-        return create_1.create();
+        return object_tools_1.nullObject();
     }
     return valSelector ? valuesLookup(array, keySelector, valSelector) : itemsLookup(array, keySelector);
 }
 exports.lookup = lookup;
 function valuesLookup(array, keySelector, valSelector) {
-    const result = create_1.create();
+    const result = object_tools_1.nullObject();
     for (let item of array) {
         const key = keySelector(item);
         const list = result[key] || (result[key] = []);
@@ -19,7 +19,7 @@ function valuesLookup(array, keySelector, valSelector) {
 }
 exports.valuesLookup = valuesLookup;
 function itemsLookup(array, keySelector) {
-    const result = create_1.create();
+    const result = object_tools_1.nullObject();
     for (let item of array) {
         const key = keySelector(item);
         const list = result[key] || (result[key] = []);

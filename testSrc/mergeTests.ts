@@ -1,9 +1,9 @@
-import { expect } from 'chai';
-import { merge } from '../src';
-import { noValue } from './noValue';
+import { expect } from "chai";
+import { merge } from "../src";
+import { noValue } from "./noValue";
 
-describe('Map/merge', function (): void {
-  it('should return map with both values', async function (): Promise<void> {
+describe("Map/merge", function (): void {
+  it("should return map with both values", async function (): Promise<void> {
     // arrange
     const first = new Map<number, boolean>();
     first.set(1, true);
@@ -19,20 +19,20 @@ describe('Map/merge', function (): void {
     expect(noValue(map.get(3))).to.be.equal(true);
   });
 
-  it('should not throw if values intersect', async function (): Promise<void> {
+  it("should not throw if values intersect", async function (): Promise<void> {
     // arrange
     const first = new Map<number, string>();
-    first.set(1, '1');
-    first.set(2, '1');
+    first.set(1, "1");
+    first.set(2, "1");
     const second = new Map<number, string>();
-    first.set(1, '2');
+    first.set(1, "2");
 
     // act
     const map = merge(first, second);
 
     // assert
-    expect(map.get(1)).to.be.equal('2');
-    expect(map.get(2)).to.be.equal('1');
+    expect(map.get(1)).to.be.equal("2");
+    expect(map.get(2)).to.be.equal("1");
     expect(noValue(map.get(3))).to.be.equal(true);
   });
 });

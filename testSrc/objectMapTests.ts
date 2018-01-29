@@ -1,10 +1,10 @@
-import { expect } from 'chai';
-import { map } from '../src/objectMap';
-import { noValue } from './noValue';
-import { constructor } from './constructorName';
+import { expect } from "chai";
+import { map } from "../src/objectMap";
+import { noValue } from "./noValue";
+import { constructor } from "./constructorName";
 
-describe('objectMap/map', function (): void {
-  it('should return map with needed values', async function (): Promise<void> {
+describe("objectMap/map", function (): void {
+  it("should return map with needed values", async function (): Promise<void> {
     // arrange
     const src = [{ id: 1 }, { id: 2 }];
 
@@ -17,22 +17,22 @@ describe('objectMap/map', function (): void {
     expect(noValue(result[3])).to.be.equal(true);
   });
 
-  it('should not throw for null', async function (): Promise<void> {
+  it("should not throw for null", async function (): Promise<void> {
     // act
-    const result = map<number>(null, item => item);
+    map<number>(null, item => item);
   });
 
-  it('should return dictionary with flags', async function (): Promise<void> {
+  it("should return dictionary with flags", async function (): Promise<void> {
     // arrange
-    const src = ['a', 'b'];
+    const src = ["a", "b"];
 
     // act
     const result = map(src, s => s, s => true);
 
     // assert
-    expect(result['a']).to.be.equal(true);
-    expect(result['b']).to.be.equal(true);
-    expect(noValue(result['c'])).to.be.equal(true);
+    expect(result["a"]).to.be.equal(true);
+    expect(result["b"]).to.be.equal(true);
+    expect(noValue(result["c"])).to.be.equal(true);
     expect(noValue(result[constructor])).to.be.equal(true);
   });
 });

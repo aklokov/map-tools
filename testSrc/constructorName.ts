@@ -1,1 +1,1 @@
-export const constructor = 'constructor';
+export const constructor = "constructor";

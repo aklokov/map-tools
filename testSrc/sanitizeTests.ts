@@ -1,12 +1,12 @@
-import { expect } from 'chai';
-import { map, sanitize, parse } from '../src/objectMap';
-import { noValue } from './noValue';
-import { constructor } from './constructorName';
+import { expect } from "chai";
+import { sanitize, parse } from "../src/objectMap";
+import { noValue } from "./noValue";
+import { constructor } from "./constructorName";
 
-describe('objectMap/sanitize', function (): void {
-  it('should return sanitized object structure', async function (): Promise<void> {
+describe("objectMap/sanitize", function (): void {
+  it("should return sanitized object structure", async function (): Promise<void> {
     // arrange
-    const array = [{ id: '1' }, { id: '2' }];
+    const array = [{ id: "1" }, { id: "2" }];
     const src = {
       array,
       map: {
@@ -28,9 +28,9 @@ describe('objectMap/sanitize', function (): void {
     expect(noValue(result.array[0][constructor])).to.be.equal(true);
   });
 
-  it('should parse then sanitize', async function (): Promise<void> {
+  it("should parse then sanitize", async function (): Promise<void> {
     // arrange
-    const array = [{ id: '1' }, { id: '2' }];
+    const array = [{ id: "1" }, { id: "2" }];
     const src = {
       array,
       map: {

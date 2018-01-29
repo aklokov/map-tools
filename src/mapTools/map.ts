@@ -1,4 +1,4 @@
-import { selector } from '../selectors';
+import { selector } from "../selectors";
 export function map<TKey, TVal>(array: TVal[], key: selector<TVal, TKey>): Map<TKey, TVal>;
 export function map<TSrc, TKey, TVal>(array: TSrc[], key: selector<TSrc, TKey>, val: selector<TSrc, TVal>): Map<TKey, TVal>;
 

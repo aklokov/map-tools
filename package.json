@@ -1,6 +1,6 @@
 {
   "name": "@vlr/map-tools",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Toolset to work with Map and 'object as hash map'",
   "files": [
     "build/src",
@@ -32,6 +32,6 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
-    "@vlr/object-tools": "^1.0.1"
+    "@vlr/object-tools": "^1.0.2"
   }
 }

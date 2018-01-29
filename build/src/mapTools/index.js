@@ -7,4 +7,5 @@ __export(require("./lookup"));
 __export(require("./map"));
 __export(require("./toObjectMap"));
 __export(require("./merge"));
+__export(require("./get"));
 //# sourceMappingURL=index.js.map

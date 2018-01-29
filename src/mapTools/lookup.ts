@@ -1,4 +1,4 @@
-import { selector } from '../selectors';
+import { selector } from "../selectors";
 export interface Lookup<TKey = string, TVal = string> extends Map<TKey, TVal[]> { }
 
 export function lookup<TKey, TVal>(array: TVal[], key: selector<TVal, TKey>): Lookup<TKey, TVal>;

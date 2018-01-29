@@ -1,1 +1,1 @@
-export * from '../build/src/objectMap/index';
+export * from "../build/src/objectMap/index";

@@ -4,7 +4,6 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./extend"));
-__export(require("./create"));
 __export(require("./get"));
 __export(require("./lookup"));
 __export(require("./map"));
