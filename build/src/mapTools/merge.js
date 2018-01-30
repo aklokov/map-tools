@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const cloneMap_1 = require("./cloneMap");
 function merge(first, second) {
-    const result = new Map(first);
+    const result = cloneMap_1.cloneMap(first);
     if (!second) {
         return result;
     }

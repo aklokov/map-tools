@@ -1,4 +1,6 @@
 import { selector } from "../selectors";
+import { cloneMap } from "./cloneMap";
+
 export function map<TKey, TVal>(array: TVal[], key: selector<TVal, TKey>): Map<TKey, TVal>;
 export function map<TSrc, TKey, TVal>(array: TSrc[], key: selector<TSrc, TKey>, val: selector<TSrc, TVal>): Map<TKey, TVal>;
 
@@ -6,22 +8,33 @@ export function map<TSrc, TKey, TVal>(
   array: TSrc[],
   keySelector: selector<TSrc, TKey>,
   valSelector?: selector<TSrc, TVal>): Map<TKey, TVal> {
-  if (!array) { return new Map<TKey, TVal>(); }
-  return valSelector ? valuesMap(array, keySelector, valSelector) : itemsMap(array, keySelector);
+  const resultMap = new Map<TKey, TVal>();
+  if (!array) { return resultMap; }
+  return valSelector ? valuesMap(resultMap, array, keySelector, valSelector) : itemsMap(resultMap, array, keySelector);
 }
 
-function itemsMap<TSrc, TKey, TVal>(array: TSrc[], keySelector: selector<TSrc, TKey>): Map<TKey, TVal> {
-  const result = new Map<TKey, TVal>();
-  for (let item of array) {
-    result.set(keySelector(item), <any>item);
-  }
-  return result;
+export function addMap<TKey, TVal>(map: Map<TKey, TVal>, array: TVal[], key: selector<TVal, TKey>): Map<TKey, TVal>;
+export function addMap<TSrc, TKey, TVal>(map: Map<TKey, TVal>, array: TSrc[], key: selector<TSrc, TKey>, val: selector<TSrc, TVal>): Map<TKey, TVal>;
+export function addMap<TSrc, TKey, TVal>(
+  map: Map<TKey, TVal>,
+  array: TSrc[],
+  keySelector: selector<TSrc, TKey>,
+  valSelector?: selector<TSrc, TVal>): Map<TKey, TVal> {
+  const resultMap = cloneMap(map);
+  if (!array) { return resultMap; }
+  return valSelector ? valuesMap(resultMap, array, keySelector, valSelector) : itemsMap(resultMap, array, keySelector);
 }
 
-function valuesMap<TSrc, TKey, TVal>(array: TSrc[], keySelector: selector<TSrc, TKey>, valSelector: selector<TSrc, TVal>): Map<TKey, TVal> {
-  const result = new Map<TKey, TVal>();
+function itemsMap<TSrc, TKey, TVal>(map: Map<TKey, TVal>, array: TSrc[], keySelector: selector<TSrc, TKey>): Map<TKey, TVal> {
   for (let item of array) {
-    result.set(keySelector(item), valSelector(item));
+    map.set(keySelector(item), <any>item);
   }
-  return result;
+  return map;
+}
+
+function valuesMap<TSrc, TKey, TVal>(map: Map<TKey, TVal>, array: TSrc[], key: selector<TSrc, TKey>, val: selector<TSrc, TVal>): Map<TKey, TVal> {
+  for (let item of array) {
+    map.set(key(item), val(item));
+  }
+  return map;
 }

@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { map } from "../src/objectMap";
+import { map, addMap } from "../src/objectMap";
 import { noValue } from "./noValue";
 import { constructor } from "./constructorName";
 
@@ -33,6 +33,24 @@ describe("objectMap/map", function (): void {
     expect(result["a"]).to.be.equal(true);
     expect(result["b"]).to.be.equal(true);
     expect(noValue(result["c"])).to.be.equal(true);
+    expect(noValue(result[constructor])).to.be.equal(true);
+  });
+});
+
+describe("objectMap/addMap", function (): void {
+  it("should return new instance of map", async function (): Promise<void> {
+    // arrange
+    const src = [{ id: 1 }, { id: 2 }];
+    const srcMap = { 3: 3 };
+    // act
+    const result = addMap(srcMap, src, item => item.id, item => item.id);
+
+    // assert
+    expect(result[1]).to.be.equal(1);
+    expect(result[2]).to.be.equal(2);
+    expect(result[3]).to.be.equal(3);
+    expect(result).to.be.not.equal(srcMap);
+    expect(noValue(result[4])).to.be.equal(true);
     expect(noValue(result[constructor])).to.be.equal(true);
   });
 });

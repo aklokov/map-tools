@@ -10,4 +10,5 @@ __export(require("./map"));
 __export(require("./sanitize"));
 __export(require("./parse"));
 __export(require("./toMap"));
+__export(require("./add"));
 //# sourceMappingURL=index.js.map

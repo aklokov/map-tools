@@ -1,5 +1,7 @@
+import { cloneMap } from "./cloneMap";
+
 export function merge<TKey, TVal>(first: Map<TKey, TVal>, second?: Map<TKey, TVal>): Map<TKey, TVal> {
-  const result = new Map<TKey, TVal>(first);
+  const result = cloneMap(first);
   if (!second) {
     return result;
   }
