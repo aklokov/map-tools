@@ -13,4 +13,6 @@ __export(require("./toMap"));
 __export(require("./add"));
 __export(require("./create"));
 __export(require("./has"));
+__export(require("./keys"));
+__export(require("./values"));
 //# sourceMappingURL=index.js.map

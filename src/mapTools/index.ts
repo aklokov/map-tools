@@ -5,3 +5,5 @@ export * from "./merge";
 export * from "./get";
 export * from "./extend";
 export * from "./add";
+export * from "./keys";
+export * from "./values";

@@ -10,4 +10,6 @@ __export(require("./merge"));
 __export(require("./get"));
 __export(require("./extend"));
 __export(require("./add"));
+__export(require("./keys"));
+__export(require("./values"));
 //# sourceMappingURL=index.js.map
