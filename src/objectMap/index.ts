@@ -9,3 +9,5 @@ export * from "./toMap";
 export * from "./add";
 export * from "./create";
 export * from "./has";
+export * from "./keys";
+export * from "./values";
