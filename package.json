@@ -32,6 +32,6 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
-    "@vlr/object-tools": "^1.0.2"
+    "@vlr/object-tools": "^1.0.3"
   }
 }
