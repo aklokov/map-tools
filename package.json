@@ -3,6 +3,7 @@
   "version": "1.0.12",
   "description": "Toolset to work with Map and 'object as hash map'",
   "files": [
+    "src",
     "build/src",
     "index.js",
     "index.js.map",
@@ -15,6 +16,23 @@
   "keywords": [],
   "author": "Vladimir Repin",
   "license": "MIT",
+  "nyc": {
+    "check-coverage": false,
+    "per-file": true,
+    "include": [
+      "build/src/**/*.js"
+    ],
+    "exclude": [
+      "build/src/types/**/*.js",
+      "build/testSrc/**/*.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "cache": true,
+    "all": true
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/repinvv/map-tools.git"
