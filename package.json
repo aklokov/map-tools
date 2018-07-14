@@ -1,6 +1,6 @@
 {
   "name": "@vlr/map-tools",
-  "version": "1.0.12",
+  "version": "1.0.14",
   "description": "Toolset to work with Map and 'object as hash map'",
   "files": [
     "src",
@@ -23,7 +23,6 @@
       "build/src/**/*.js"
     ],
     "exclude": [
-      "build/src/types/**/*.js",
       "build/testSrc/**/*.js"
     ],
     "reporter": [
@@ -31,7 +30,7 @@
       "text-summary"
     ],
     "cache": true,
-    "all": true
+    "all": false
   },
   "repository": {
     "type": "git",
@@ -53,6 +52,8 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
-    "@vlr/object-tools": "^1.0.3"
+    "@vlr/array-tools": "^1.0.10",
+    "@vlr/object-tools": "^1.0.3",
+    "object-hash": "^1.3.0"
   }
 }

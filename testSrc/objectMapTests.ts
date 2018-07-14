@@ -1,15 +1,15 @@
 import { expect } from "chai";
-import { map, addMap } from "../src/objectMap";
+import { toMap, addToMap } from "../src/objectMap";
 import { noValue } from "./noValue";
 import { constructor } from "./constructorName";
 
-describe("objectMap/map", function (): void {
-  it("should return map with needed values", async function (): Promise<void> {
+describe("objectMap/toMap", function (): void {
+  it("should return IMap with needed values", async function (): Promise<void> {
     // arrange
     const src = [{ id: 1 }, { id: 2 }];
 
     // act
-    const result = map(src, item => item.id);
+    const result = toMap(src, item => item.id);
 
     // assert
     expect(result[1]).to.be.equal(src[0]);
@@ -19,15 +19,15 @@ describe("objectMap/map", function (): void {
 
   it("should not throw for null", async function (): Promise<void> {
     // act
-    map<number>(null, item => item);
+    toMap<number>(null, item => item);
   });
 
-  it("should return dictionary with flags", async function (): Promise<void> {
+  it("should return IMap with flags", async function (): Promise<void> {
     // arrange
     const src = ["a", "b"];
 
     // act
-    const result = map(src, s => s, s => true);
+    const result = toMap(src, s => s, s => true);
 
     // assert
     expect(result["a"]).to.be.equal(true);
@@ -37,13 +37,13 @@ describe("objectMap/map", function (): void {
   });
 });
 
-describe("objectMap/addMap", function (): void {
-  it("should return new instance of map", async function (): Promise<void> {
+describe("objectMap/addToMap", function (): void {
+  it("should return new instance of IMap", async function (): Promise<void> {
     // arrange
     const src = [{ id: 1 }, { id: 2 }];
     const srcMap = { 3: 3 };
     // act
-    const result = addMap(srcMap, src, item => item.id, item => item.id);
+    const result = addToMap(srcMap, src, item => item.id, item => item.id);
 
     // assert
     expect(result[1]).to.be.equal(1);

@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { map, extend } from "../src/objectMap";
+import { toMap, extend } from "../src/objectMap";
 import { noValue } from "./noValue";
 import { constructor } from "./constructorName";
 
@@ -7,7 +7,7 @@ describe("objectMap/extend", function (): void {
   it("should extend the map with object", async function (): Promise<void> {
     // arrange
     const src = ["a", "b"];
-    const srcMap = map(src, item => item, item => true);
+    const srcMap = toMap(src, item => item, item => true);
     // act
 
     const result = extend(srcMap, { "c": true });
@@ -23,7 +23,7 @@ describe("objectMap/extend", function (): void {
   it("should put object onto the null-prototype object", async function (): Promise<void> {
     // arrange
     const src = ["a", "b"];
-    const srcMap = map(src, item => item, item => true);
+    const srcMap = toMap(src, item => item, item => true);
     // act
 
     const result = extend({ ...srcMap, "c": true });

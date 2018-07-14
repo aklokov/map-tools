@@ -5,11 +5,11 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./extend"));
 __export(require("./get"));
-__export(require("./lookup"));
-__export(require("./map"));
+__export(require("./toGroup"));
+__export(require("./toMap"));
 __export(require("./sanitize"));
 __export(require("./parse"));
-__export(require("./toMap"));
+__export(require("./toEs6Map"));
 __export(require("./add"));
 __export(require("./create"));
 __export(require("./has"));

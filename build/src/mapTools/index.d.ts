@@ -1,5 +1,5 @@
-export * from "./lookup";
-export * from "./map";
+export * from "./toGroup";
+export * from "./toMap";
 export * from "./toObjectMap";
 export * from "./merge";
 export * from "./get";
@@ -7,3 +7,5 @@ export * from "./extend";
 export * from "./add";
 export * from "./keys";
 export * from "./values";
+export * from "./has";
+export * from "./groupBy";

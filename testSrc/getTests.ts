@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { map, get } from "../src/objectMap";
+import { toMap, get } from "../src/objectMap";
 import { noValue } from "./noValue";
 import { constructor } from "./constructorName";
 
@@ -9,7 +9,7 @@ describe("objectMap/get", function (): void {
     const src = ["a", "b"];
 
     // act
-    const result = map(src, item => item, item => true);
+    const result = toMap(src, item => item, item => true);
 
     // assert
     expect(get(result, "a")).to.be.equal(true);

@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const object_tools_1 = require("@vlr/object-tools");
-function lookup(array, keySelector, valSelector) {
+function toGroup(array, keySelector, valSelector) {
     if (!array) {
         return object_tools_1.nullObject();
     }
     return valSelector ? valuesLookup(array, keySelector, valSelector) : itemsLookup(array, keySelector);
 }
-exports.lookup = lookup;
+exports.toGroup = toGroup;
 function valuesLookup(array, keySelector, valSelector) {
     const result = object_tools_1.nullObject();
     for (let item of array) {
@@ -28,4 +28,4 @@ function itemsLookup(array, keySelector) {
     return result;
 }
 exports.itemsLookup = itemsLookup;
-//# sourceMappingURL=lookup.js.map
+//# sourceMappingURL=toGroup.js.map

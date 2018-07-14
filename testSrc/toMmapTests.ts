@@ -1,13 +1,13 @@
 import { expect } from "chai";
-import { map, addMap } from "../src";
+import { toMap, addToMap } from "../src";
 
-describe("Map/map", function (): void {
+describe("Map/toMap", function (): void {
   it("should return map with needed values", async function (): Promise<void> {
     // arrange
     const src = [{ id: 1 }, { id: 2 }];
 
     // act
-    const result = map(src, item => item.id);
+    const result = toMap(src, item => item.id);
 
     // assert
     expect(result.get(1)).to.be.equal(src[0]);
@@ -17,7 +17,7 @@ describe("Map/map", function (): void {
 
   it("should not throw for null", async function (): Promise<void> {
     // act
-    map<string, string>(null, item => item);
+    toMap<string, string>(null, item => item);
   });
 
   it("should return dictionary with flags", async function (): Promise<void> {
@@ -25,7 +25,7 @@ describe("Map/map", function (): void {
     const src = ["a", "b"];
 
     // act
-    const result = map(src, s => s, s => true);
+    const result = toMap(src, s => s, s => true);
 
     // assert
     expect(result.get("a")).to.be.equal(true);
@@ -34,13 +34,13 @@ describe("Map/map", function (): void {
   });
 });
 
-describe("Map/addMap", function (): void {
+describe("Map/addToMap", function (): void {
   it("should return new instance of map", async function (): Promise<void> {
     // arrange
     const src = [{ id: 1 }, { id: 2 }];
     const srcMap = new Map([[3, 3]]);
     // act
-    const result = addMap(srcMap, src, item => item.id, item => item.id);
+    const result = addToMap(srcMap, src, item => item.id, item => item.id);
 
     // assert
     expect(result.get(1)).to.be.equal(1);

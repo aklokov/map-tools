@@ -1,8 +1,8 @@
 import { expect } from "chai";
-import { toMap } from "../src/objectMap";
+import { toEs6Map } from "../src/objectMap";
 
 describe("objectMap/toMap", function (): void {
-  it("should convert objectMap to Map", async function (): Promise<void> {
+  it("should convert objectMap to Es6 Map", async function (): Promise<void> {
     // arrange
     const src = {
       "1": "2",
@@ -10,7 +10,7 @@ describe("objectMap/toMap", function (): void {
     };
 
     // act
-    const result = toMap(src);
+    const result = toEs6Map(src);
 
     // assert
     expect(result.get("1")).to.be.equal("2");

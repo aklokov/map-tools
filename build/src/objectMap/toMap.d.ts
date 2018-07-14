@@ -1,3 +1,10 @@
-import { IMap, INumberMap } from "./interfaces";
-export declare function toMap<TVal>(map: IMap<TVal>): Map<string, TVal>;
-export declare function toMap<TVal>(map: INumberMap<TVal>): Map<string, TVal>;
+import { INumberMap, IMap } from "./interfaces";
+import { selector, stringSelector, numberSelector } from "../selectors";
+export declare function toMap<TVal>(array: TVal[], key: stringSelector<TVal>): IMap<TVal>;
+export declare function toMap<TVal>(array: TVal[], key: numberSelector<TVal>): INumberMap<TVal>;
+export declare function toMap<TSrc, TVal>(array: TSrc[], key: stringSelector<TSrc>, val: selector<TSrc, TVal>): IMap<TVal>;
+export declare function toMap<TSrc, TVal>(array: TSrc[], key: numberSelector<TSrc>, val: selector<TSrc, TVal>): INumberMap<TVal>;
+export declare function addToMap<TVal>(map: IMap<TVal>, array: TVal[], key: stringSelector<TVal>): IMap<TVal>;
+export declare function addToMap<TVal>(map: INumberMap<TVal>, array: TVal[], key: numberSelector<TVal>): INumberMap<TVal>;
+export declare function addToMap<TSrc, TVal>(map: IMap<TVal>, array: TSrc[], key: stringSelector<TSrc>, val: selector<TSrc, TVal>): IMap<TVal>;
+export declare function addToMap<TSrc, TVal>(map: INumberMap<TVal>, array: TSrc[], key: numberSelector<TSrc>, val: selector<TSrc, TVal>): INumberMap<TVal>;

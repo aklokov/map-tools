@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function lookup(array, keySelector, valSelector) {
+function toGroup(array, keySelector, valSelector) {
     if (!array) {
         return new Map();
     }
     return valSelector ? valuesLookup(array, keySelector, valSelector) : itemsLookup(array, keySelector);
 }
-exports.lookup = lookup;
+exports.toGroup = toGroup;
 function itemsLookup(array, keySelector) {
     const result = new Map();
     for (let item of array) {
@@ -31,4 +31,4 @@ function valuesLookup(array, keySelector, valSelector) {
     }
     return result;
 }
-//# sourceMappingURL=lookup.js.map
+//# sourceMappingURL=toGroup.js.map
