@@ -1,6 +1,6 @@
 {
   "name": "@vlr/map-tools",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Toolset to work with Map and 'object as hash map'",
   "files": [
     "src",

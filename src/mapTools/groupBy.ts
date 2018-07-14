@@ -1,34 +1,40 @@
 import { Group } from "./toGroup";
-import { IMap } from "../objectMap";
+import { IMap, keys } from "../objectMap";
 import * as objectHash from "object-hash";
 import { values } from "./values";
 
-export type Selector<T> = (item: T) => any;
 export type Key = IMap<any>;
+export type Selector<T> = (i: T) => any;
+export type KeySelector<T> = (i: T) => Key;
 
-interface Result<T> {
-  key: Key;
-  values: T[];
-}
-
+type Result<T> = { key: Key; values: T[]; };
 type Store<T> = Map<string, Result<T>[]>;
 
+export function groupBy<T, TKey extends Key>(arr: T[], selector: KeySelector<T>): Group<TKey, T>;
+export function groupBy<T>(arr: T[], ...selectors: Selector<T>[]): Group<Key, T>;
 export function groupBy<T>(arr: T[], ...selectors: Selector<T>[]): Group<Key, T> {
   const store = new Map<string, Result<T>[]>();
 
-  arr.forEach(item => {
-    const key = createKey(item, selectors);
-    const hash = objectHash(key);
-    const result = getResult(store, hash, key, selectors.length);
-    result.values.push(item);
-  });
+  if (selectors.length === 1) {
+    arr.forEach(item => {
+      const key = selectors[0](item);
+      const hash = objectHash(key);
+      getResult(store, hash, key).values.push(item);
+    });
+  } else {
+    arr.forEach(item => {
+      const key = createKey(item, selectors);
+      const hash = objectHash(key);
+      getResult(store, hash, key).values.push(item);
+    });
+  }
 
   const output = new Map<Key, T[]>();
   values(store).forEach(results => results.forEach(result => { output.set(result.key, result.values); }));
   return output;
 }
 
-function getResult<T>(store: Store<T>, hash: string, key: Key, length: number): Result<T> {
+function getResult<T>(store: Store<T>, hash: string, key: Key): Result<T> {
   const results = store.get(hash);
   if (!results) {
     const result = { key, values: [] };
@@ -36,7 +42,7 @@ function getResult<T>(store: Store<T>, hash: string, key: Key, length: number): 
     return result;
   }
 
-  let result = results.find(r => compareKey(r.key, key, length));
+  let result = results.find(r => compareKey(r.key, key));
   if (result) { return result; }
   result = { key, values: [] };
   results.push(result);
@@ -50,10 +56,11 @@ function createKey<T>(item: T, by: Selector<T>[]): Key {
   return obj;
 }
 
-function compareKey(obj1: Key, obj2: IMap<any>, length: number): boolean {
-  let i = length;
+function compareKey(key1: Key, key2: Key): boolean {
+  const fields = keys(key1);
+  let i = fields.length;
   while (i--) {
-    if (obj1[i] !== obj2[i]) { return false; }
+    if (key1[fields[i]] !== key2[fields[i]]) { return false; }
   }
   return true;
 }
